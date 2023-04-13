@@ -13,3 +13,38 @@ $_success: #37b106;
 $_success-shade: #2b8a05;
 $_warn: #FFF837;
 $_warn-shade: #e0db33;
+
+// OTHERS
+$_light-white: #ffffff;
+$_border-tint: #c7c7c7;
+$_grey: #ccc;
+$_blue-strong: #0f1429;
+$_blue-strong-shade: #233063;
+$_text-light-color: #706e6e;
+$_primary-tint: #35A4D5;
+$_background-light-grey: #ebebeb;
+
+/** medium **/
+$_medium: #92949c;
+$_medium-rgb: 146, 148, 156;
+$_medium-contrast: #ffffff;
+$_medium-contrast-rgb: 255, 255, 255;
+$_medium-shade: #808289;
+$_medium-tint: #a5a3a3;
+
+/** success **/
+$_success: #2dd36f;
+$_success-rgb: 45, 211, 111;
+$_success-contrast: #ffffff;
+$_success-contrast-rgb: 255, 255, 255;
+$_success-shade: #28ba62;
+$_success-tint: #42d77d;
+$_success-block: #3a7036;
+
+/** danger **/
+$_danger: #eb445a;
+$_danger-rgb: 235, 68, 90;
+$_danger-contrast: #ffffff;
+$_danger-contrast-rgb: 255, 255, 255;
+$_danger-shade: #cf3c4f;
+$_danger-tint: #ed576b;

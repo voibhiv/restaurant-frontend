@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -24,7 +24,10 @@ export default {
       { name: "format-detection", content: "telephone=no" },
       { name: "author", content: "Leandro Melo" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'}
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -35,13 +38,18 @@ export default {
     { src: "~/plugins/notifications.plugin.js", ssr: false },
     { src: "~/plugins/httpClient.plugin.js" },
     { src: "~/plugins/utils.plugin.js", ssr: false },
+    { src: '~/plugins/notifyShortCuts.plugin.js' },
+    { src: '~/plugins/objSsr.plugin.js' },
+    { src: '~/plugins/format.plugin.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    'module-alias'
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -80,28 +88,23 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend(config, ctx) {
-      config.resolve.alias["@"] = path.resolve(__dirname, "");
-      config.resolve.alias["@api"] = path.resolve(__dirname, "api/");
-      config.resolve.alias["@images"] = path.resolve(
-        __dirname,
-        "assets/images/"
-      );
-      config.resolve.alias["@atoms"] = path.resolve(
-        __dirname,
-        "components/atoms/"
-      );
-      config.resolve.alias["@molecules"] = path.resolve(
-        __dirname,
-        "components/molecules/"
-      );
-      config.resolve.alias["@organisms"] = path.resolve(
-        __dirname,
-        "components/organisms/"
-      );
-      config.resolve.alias["@pages"] = path.resolve(__dirname, "pages/");
-      config.resolve.alias["@plugins"] = path.resolve(__dirname, "plugins/");
-      config.output.globalObject = "this";
+    extend(config, { isDev, isClient }) {
+      if (isDev && isClient) {
+        config.resolve.alias = {
+          ...config.resolve.alias,
+          ...{
+            '@': __dirname,
+            '@api': `${__dirname}/api`,
+            '@images': `${__dirname}/assets/images`,
+            '@atoms': `${__dirname}/components/atoms`,
+            '@molecules': `${__dirname}/components/molecules`,
+            '@organisms': `${__dirname}/components/organisms`,
+            '@pages': `${__dirname}/pages`,
+            '@plugins': `${__dirname}/plugins`,
+          },
+        };
+        config.output.globalObject = 'this';
+      }
     },
   },
 

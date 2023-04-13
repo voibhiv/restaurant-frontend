@@ -8,7 +8,7 @@ export default function ({ $axios, $config }, inject) {
         timeout: 50000, // indicates, 50000ms ie. 50 seconds
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "origin"
+            "Access-Control-Allow-Origin": "*"
         }
     });
     
@@ -17,7 +17,7 @@ export default function ({ $axios, $config }, inject) {
         timeout: 50000, // indicates, 50000ms ie. 50 seconds
         headers: {
             'Content-Type': 'multipart/form-data',
-            "Access-Control-Allow-Origin": "origin"
+            "Access-Control-Allow-Origin": "*"
         }
     });
 

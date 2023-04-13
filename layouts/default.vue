@@ -3,7 +3,7 @@
     <notifications group="notifications" position="bottom center" class="notification-style"/>
 
     <section class="py-0 position-relative main-section" >
-
+      <!-- {{ isLoginPage }} -->
       <!-- <Header/> -->
       <div class="page-content-div">
         <Nuxt />
@@ -29,7 +29,7 @@ export default {
     },
 
     isLoginPage() {
-      return this.$nuxt.$route.name.toLowerCase() === "login" || false;
+      return this.$nuxt.$route.name.toLowerCase() === "login-page" || false;
     }
 
   }
@@ -87,6 +87,7 @@ export default {
 
   ::v-deep .page-content-div {
     flex: 1 0 auto;
+    height: 100%;
   }
 
   ::v-deep .main-section {
