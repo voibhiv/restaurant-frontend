@@ -161,24 +161,25 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $_primary !important;
+    color: $_blue-strong !important;
     text-decoration: none ;
     width: fit-content !important;
     margin: 0;
     cursor: pointer;
     .disabled {
-      color: $_primary-shade !important;
+      color: $_blue-strong-shade !important;
     }
   }
 
   .link-a span {
     float: left !important;
     font-family: 'Roboto', sans-serif;
+    text-decoration: underline;
   }
   
   .link-a:hover{
     font-weight: bold;
-    color: $_primary-shade !important;
+    color: $_blue-strong-shade !important;
   }
 
   .icon-div {
@@ -204,6 +205,10 @@ export default {
     
   }
   
+  .link-login-restaurant {
+    margin-left: 5px;
+    float: right;
+  }
 
 </style>
 

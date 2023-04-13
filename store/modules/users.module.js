@@ -3,7 +3,7 @@
  */
 import Vue from "vue";
 import jwt_decode from "jwt-decode";
-import { createUserAPI } from "@/api/user.api";
+import { createUserAPI, model } from "@/api/users.api";
 
 const state = {};
 
@@ -14,14 +14,32 @@ const actions = {
     try {
       const data = await createUserAPI(payload);
 
-      console.log(data);
+      if (data && data[model.success] === false) {
+        throw new Error(data[model.data][model.message]);
+      }
+
+      this.$notify({
+        group: "notifications",
+        type: "success",
+        title: "Usuário Criado!",
+        text: `Usuário foi criado com sucesso! Por favor, faça login.`,
+      });
+
       return true;
     } catch (error) {
-      console.log("DEU ERRO");
-      console.log(error);
+      Vue.prototype.$notify({
+        group: "notifications",
+        clean: true,
+      });
+      Vue.prototype.$notify({
+        group: "notifications",
+        type: "error",
+        title: "Erro na criação do usuário",
+        text: error[model.message],
+      });
       return false;
     }
-  }
+  },
 };
 
 const mutations = {};

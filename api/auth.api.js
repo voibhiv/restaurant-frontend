@@ -6,7 +6,9 @@ const loginAPI = (data) => Vue.prototype.$httpClient.post(`${END_POINT}/login`, 
 
 const model = {
   "message": "message",
-  "code": "statusCode"
+  "code": "statusCode",
+  "token": "token",
+  "user": "user"
 };
 
 export { model, loginAPI };

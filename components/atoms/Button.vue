@@ -370,6 +370,12 @@ export default {
     color: $_light-white;
   }
   
+  .info-button-user:disabled {
+    background-color: $_light-white !important;
+    color: $_blue-strong !important;
+    border-color: $_light-white !important;
+  }
+
   .btnNormal:disabled,
   .btnOutline:disabled,
   .btnClean:disabled {

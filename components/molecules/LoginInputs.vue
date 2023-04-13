@@ -53,7 +53,7 @@
 <script>
 import Input from "@atoms/Input";
 import Button from "@atoms/Button";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "LoginInputs",
@@ -120,9 +120,10 @@ export default {
         };
 
         this.login(payload).then((data) => {
-          this.clearInputs();
           this.loading = false;
-          console.log(data);
+          if (!data) return;
+          this.$redirect("/home", null);
+          this.clearInputs();
         });
 
       } else {

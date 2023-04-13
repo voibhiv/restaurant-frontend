@@ -55,6 +55,7 @@
 import Input from "@atoms/Input";
 import Select from "@atoms/Select";
 import Button from "@atoms/Button";
+import { mapActions } from "vuex";
 
 export default {
   name: "RegisterInputs",
@@ -229,6 +230,18 @@ export default {
       this.$emit("backToLogin");
     },
 
+    clearInputs() {
+      this.name = "";
+      this.username = "";
+      this.password = "";
+      this.email = "";
+      this.aboutMe = "";
+      this.phone = "";
+      this.birthday = "";
+      this.enableInvalid = false;
+      this.gender = null;
+    },
+
     sendForm() {
       this.enableInvalid = true;
 
@@ -255,6 +268,8 @@ export default {
           return;
         }
 
+        this.loading = true;
+
         // Build the payload
         const payload = {
           name: this.name,
@@ -267,11 +282,20 @@ export default {
           gender: this.gender
         };
 
-        console.log(payload);
+        this.createUser(payload).then((data) => {
+          this.loading = false;
+          if (!data) return;
+          this.clearInputs();
+          this.backToLogin();
+        });
+
       } else {
         this.$showFillFields();
       }
     },
+
+    ...mapActions("users", ["createUser"])
+
   },
 };
 </script>

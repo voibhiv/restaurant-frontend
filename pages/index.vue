@@ -1,10 +1,8 @@
 
 <script>
 export default {
-    middleware: [
-        function({ redirect }) {
-            redirect('/Home');
-        },
-    ],
+  middleware({ redirect }) {
+    redirect("/login");
+  },
 };
 </script>

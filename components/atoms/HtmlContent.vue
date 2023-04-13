@@ -138,4 +138,23 @@ export default {
     color: $_blue-strong;
   }
 
+  .title-menus {
+    font-size: 4vh;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: $_blue-strong;
+  }
+
+  .card-restaurant-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: $_blue-strong;
+  }
+
+  .card-restaurant-description {
+    font-size: 11px !important;
+    color: $_text-light-color;
+  }
+
 </style>

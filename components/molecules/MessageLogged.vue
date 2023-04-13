@@ -2,26 +2,41 @@
   <div class="content-text-register">
     <HtmlContent :classesText="'login-title'" :html="title" />
     <HtmlContent :classesText="'login-subtitle'" :html="subtitle" />
+    <Button
+      label="Ver Restautantes"
+      class="btn-login"
+      :outline="false"
+      @btnClicked="emitRedirect"
+    />
   </div>
 </template>
 
 <script>
 import HtmlContent from "@atoms/HtmlContent";
+import Button from "@atoms/Button";
 
 export default {
-  name: "RegisterInformations",
+  name: "MessageLogged",
 
   components: {
-    HtmlContent
+    HtmlContent,
+    Button
   },
 
   data() {
     return {
-      title: "Registre-se",
+      title: "Você já está logado!",
       subtitle:
-        "Preencha os campos abaixo e clique em 'Registrar'",
+        "Clique no botão abaixo para ver os restaurantes disponíveis'",
     };
   },
+
+  methods: {
+    emitRedirect() {
+      this.$emit("goToHome");
+    }
+  }
+  
 };
 </script>
 
